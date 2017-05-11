@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: SyliusLabs\RabbitMqSimpleBusBundle
+        psr4_prefix: SyliusLabs\RabbitMqSimpleBusBundle

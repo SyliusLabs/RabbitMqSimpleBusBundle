@@ -1,0 +1,24 @@
+{
+    "name": "sylius-labs/rabbitmq-simplebus-plugin",
+    "type": "symfony-bundle",
+    "description": "Integrates RabbitMQ with SimpleBus.",
+    "license": "MIT",
+    "require": {
+        "php": "^5.6|^7.0",
+
+        "php-amqplib/rabbitmq-bundle": "^1.12",
+        "psr/log": "^1.0",
+        "simple-bus/message-bus": "^2.2",
+        "simple-bus/symfony-bridge": "^4.1"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^3.2",
+        "phpunit/phpunit": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "SyliusLabs\\RabbitMqSimpleBusBundle\\": "src/",
+            "Tests\\SyliusLabs\\RabbitMqSimpleBusBundle\\": "tests/"
+        }
+    }
+}
