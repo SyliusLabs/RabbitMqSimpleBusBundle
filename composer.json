@@ -7,9 +7,9 @@
         "php": "^5.6|^7.0",
 
         "php-amqplib/rabbitmq-bundle": "^1.12",
-        "psr/log": "^1.0",
         "simple-bus/message-bus": "^2.2",
-        "simple-bus/symfony-bridge": "^4.1"
+        "simple-bus/symfony-bridge": "^4.1",
+        "symfony/monolog-bundle": "^3.1"
     },
     "require-dev": {
         "phpspec/phpspec": "^3.2",
