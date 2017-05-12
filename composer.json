@@ -17,7 +17,11 @@
     },
     "autoload": {
         "psr-4": {
-            "SyliusLabs\\RabbitMqSimpleBusBundle\\": "src/",
+            "SyliusLabs\\RabbitMqSimpleBusBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Tests\\SyliusLabs\\RabbitMqSimpleBusBundle\\": "tests/"
         }
     }
