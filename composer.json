@@ -1,5 +1,5 @@
 {
-    "name": "sylius-labs/rabbitmq-simplebus-plugin",
+    "name": "sylius-labs/rabbitmq-simplebus-bundle",
     "type": "symfony-bundle",
     "description": "Integrates RabbitMQ with SimpleBus.",
     "license": "MIT",
