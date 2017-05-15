@@ -7,7 +7,7 @@ php:
 
 cache:
     directories:
-        - ~/.composer/cache/files
+        - vendor
 
 before_install:
     - phpenv config-rm xdebug.ini || true
@@ -19,3 +19,4 @@ install:
 script:
     - composer validate --strict
 
+    - vendor/bin/phpspec run --format dot -vvv --no-interaction
