@@ -53,8 +53,12 @@ final class RabbitMqConsumer implements ConsumerInterface
             $message = $this->denormalizer->denormalize($message);
 
             $this->messageBus->handle($message);
-        } catch (DenormalizationFailedException $exception) {
-            $this->logger->error(sprintf('Exception while handling an AMQP message: %s', $exception->getMessage()));
+        } catch (\Throwable $throwable) {
+            $this->logger->error(sprintf(
+                'Exception while handling an AMQP message: "%s". Stacktrace: %s',
+                $throwable->getMessage(),
+                $throwable->getTraceAsString()
+            ));
         }
     }
 }

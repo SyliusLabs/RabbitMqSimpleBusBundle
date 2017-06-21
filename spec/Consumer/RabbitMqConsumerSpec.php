@@ -5,6 +5,7 @@ namespace spec\SyliusLabs\RabbitMqSimpleBusBundle\Consumer;
 use OldSound\RabbitMqBundle\RabbitMq\ConsumerInterface;
 use PhpAmqpLib\Message\AMQPMessage;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 use Psr\Log\LoggerInterface;
 use SyliusLabs\RabbitMqSimpleBusBundle\Bus\MessageBusInterface;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizationFailedException;
@@ -47,7 +48,23 @@ final class RabbitMqConsumerSpec extends ObjectBehavior
 
         $denormalizer->denormalize($amqpMessage)->willThrow(new DenormalizationFailedException('Message body is invalid'));
 
-        $logger->error('Exception while handling an AMQP message: Message body is invalid')->shouldBeCalled();
+        $logger->error(Argument::containingString('Message body is invalid'))->shouldBeCalled();
+
+        $this->execute($amqpMessage);
+    }
+
+    function it_logs_any_error(
+        DenormalizerInterface $denormalizer,
+        LoggerInterface $logger
+    ) {
+        $amqpMessage = new AMQPMessage('Invalid message body');
+
+        $denormalizer->denormalize($amqpMessage)->will(function () {
+            /** @noinspection PhpUndefinedVariableInspection */
+            return $undefinedVariable;
+        });
+
+        $logger->error(Argument::containingString('notice: Undefined variable: undefinedVariable'))->shouldBeCalled();
 
         $this->execute($amqpMessage);
     }
