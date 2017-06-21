@@ -51,6 +51,7 @@ final class RabbitMqConsumerSpec extends ObjectBehavior
         $denormalizer->denormalize($amqpMessage)->willThrow(new DenormalizationFailedException('Message body is invalid'));
 
         $logger->error(Argument::containingString('Message body is invalid'))->shouldBeCalled();
+        $logger->error(Argument::containingString('Invalid message body'))->shouldBeCalled();
 
         $this->execute($amqpMessage);
     }
@@ -67,6 +68,7 @@ final class RabbitMqConsumerSpec extends ObjectBehavior
         });
 
         $logger->error(Argument::containingString('notice: Undefined variable: undefinedVariable'))->shouldBeCalled();
+        $logger->error(Argument::containingString('Invalid message body'))->shouldBeCalled();
 
         $this->execute($amqpMessage);
     }

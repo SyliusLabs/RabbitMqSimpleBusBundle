@@ -56,8 +56,9 @@ final class RabbitMqConsumer implements ConsumerInterface
             $this->messageBus->handle($message);
         } catch (\Throwable $throwable) {
             $this->logger->error(sprintf(
-                'Exception while handling an AMQP message: "%s". Stacktrace: %s',
+                'Exception "%s" while handling an AMQP message: "%s". Stacktrace: %s',
                 $throwable->getMessage(),
+                $message->getBody(),
                 $throwable->getTraceAsString()
             ));
         }
