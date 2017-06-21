@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SyliusLabs\RabbitMqSimpleBusBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +14,7 @@ final class RabbitMqSimpleBusExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(array $config, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));

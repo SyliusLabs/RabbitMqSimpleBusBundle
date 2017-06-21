@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\SyliusLabs\RabbitMqSimpleBusBundle\Bus;
 
 use PhpSpec\ObjectBehavior;
@@ -11,17 +13,17 @@ use SyliusLabs\RabbitMqSimpleBusBundle\Bus\MessageBusInterface;
  */
 final class SimpleBusSpec extends ObjectBehavior
 {
-    function let(MessageBus $messageBus)
+    function let(MessageBus $messageBus): void
     {
         $this->beConstructedWith($messageBus);
     }
 
-    function it_is_a_message_bus()
+    function it_is_a_message_bus(): void
     {
         $this->shouldImplement(MessageBusInterface::class);
     }
 
-    function it_delegates_handling_messages_to_simple_bus(MessageBus $messageBus)
+    function it_delegates_handling_messages_to_simple_bus(MessageBus $messageBus): void
     {
         $message = new \stdClass();
 

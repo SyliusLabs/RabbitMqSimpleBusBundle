@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer;
 
 use PhpAmqpLib\Message\AMQPMessage;
@@ -14,7 +16,7 @@ interface DenormalizerInterface
      *
      * @return bool
      */
-    public function supports(AMQPMessage $message);
+    public function supports(AMQPMessage $message): bool;
 
     /**
      * @param AMQPMessage $message
