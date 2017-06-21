@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer;
 
 use PhpAmqpLib\Message\AMQPMessage;
@@ -17,7 +19,7 @@ final class CompositeDenormalizer implements DenormalizerInterface
     /**
      * @param DenormalizerInterface $denormalizer
      */
-    public function addDenormalizer(DenormalizerInterface $denormalizer)
+    public function addDenormalizer(DenormalizerInterface $denormalizer): void
     {
         $this->denormalizers[] = $denormalizer;
     }
@@ -25,7 +27,7 @@ final class CompositeDenormalizer implements DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supports(AMQPMessage $message)
+    public function supports(AMQPMessage $message): bool
     {
         foreach ($this->denormalizers as $denormalizer) {
             if ($denormalizer->supports($message)) {

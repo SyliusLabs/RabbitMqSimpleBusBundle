@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SyliusLabs\RabbitMqSimpleBusBundle\Consumer;
 
 use OldSound\RabbitMqBundle\RabbitMq\ConsumerInterface;
 use PhpAmqpLib\Message\AMQPMessage;
 use Psr\Log\LoggerInterface;
 use SyliusLabs\RabbitMqSimpleBusBundle\Bus\MessageBusInterface;
-use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizationFailedException;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizerInterface;
 
 /**
@@ -47,14 +48,18 @@ final class RabbitMqConsumer implements ConsumerInterface
     /**
      * {@inheritdoc}
      */
-    public function execute(AMQPMessage $message)
+    public function execute(AMQPMessage $message): void
     {
         try {
             $message = $this->denormalizer->denormalize($message);
 
             $this->messageBus->handle($message);
-        } catch (DenormalizationFailedException $exception) {
-            $this->logger->error(sprintf('Exception while handling an AMQP message: %s', $exception->getMessage()));
+        } catch (\Throwable $throwable) {
+            $this->logger->error(sprintf(
+                'Exception while handling an AMQP message: "%s". Stacktrace: %s',
+                $throwable->getMessage(),
+                $throwable->getTraceAsString()
+            ));
         }
     }
 }

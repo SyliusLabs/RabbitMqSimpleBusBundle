@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SyliusLabs\RabbitMqSimpleBusBundle\Bus;
 
 use SimpleBus\Message\Bus\MessageBus;
@@ -25,7 +27,7 @@ final class SimpleBus implements MessageBusInterface
     /**
      * {@inheritdoc}
      */
-    public function handle($message)
+    public function handle($message): void
     {
         $this->messageBus->handle($message);
     }

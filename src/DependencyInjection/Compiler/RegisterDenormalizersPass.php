@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SyliusLabs\RabbitMqSimpleBusBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -14,7 +16,7 @@ final class RegisterDenormalizersPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->hasDefinition('rabbitmq_simplebus.amqp_denormalizer')) {
             return;

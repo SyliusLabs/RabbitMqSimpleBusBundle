@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\SyliusLabs\RabbitMqSimpleBusBundle\DependencyInjection\Compiler;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractCompilerPassTestCase;
@@ -16,7 +18,7 @@ final class RegisterDenormalizersPassTest extends AbstractCompilerPassTestCase
     /**
      * {@inheritdoc}
      */
-    protected function registerCompilerPass(ContainerBuilder $container)
+    protected function registerCompilerPass(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new RegisterDenormalizersPass());
     }
@@ -24,7 +26,7 @@ final class RegisterDenormalizersPassTest extends AbstractCompilerPassTestCase
     /**
      * @test
      */
-    public function it_registers_tagged_denormalizers_in_a_composite_one()
+    public function it_registers_tagged_denormalizers_in_a_composite_one(): void
     {
         $compositeDenormalizer = new Definition();
         $this->setDefinition('rabbitmq_simplebus.amqp_denormalizer', $compositeDenormalizer);
