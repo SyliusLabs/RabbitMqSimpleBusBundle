@@ -56,13 +56,34 @@ final class RabbitMqConsumerSpec extends ObjectBehavior
         $this->execute($amqpMessage);
     }
 
-    function it_logs_any_error(
+    function it_logs_any_error_that_happened_during_denormalization(
         DenormalizerInterface $denormalizer,
         LoggerInterface $logger
     ): void {
         $amqpMessage = new AMQPMessage('Invalid message body');
 
         $denormalizer->denormalize($amqpMessage)->will(function () {
+            /** @noinspection PhpUndefinedVariableInspection */
+            return $undefinedVariable;
+        });
+
+        $logger->error(Argument::containingString('notice: Undefined variable: undefinedVariable'))->shouldBeCalled();
+        $logger->error(Argument::containingString('Invalid message body'))->shouldBeCalled();
+
+        $this->execute($amqpMessage);
+    }
+
+    function it_logs_any_error_that_happened_during_handling_denormalized_message(
+        DenormalizerInterface $denormalizer,
+        MessageBusInterface $messageBus,
+        LoggerInterface $logger
+    ): void {
+        $amqpMessage = new AMQPMessage('Invalid message body');
+        $denormalizedMessage = new \stdClass();
+
+        $denormalizer->denormalize($amqpMessage)->willReturn($denormalizedMessage);
+
+        $messageBus->handle($denormalizedMessage)->will(function () {
             /** @noinspection PhpUndefinedVariableInspection */
             return $undefinedVariable;
         });
