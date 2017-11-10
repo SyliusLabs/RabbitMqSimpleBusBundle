@@ -10,9 +10,6 @@ use Psr\Log\LoggerInterface;
 use SyliusLabs\RabbitMqSimpleBusBundle\Bus\MessageBusInterface;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizerInterface;
 
-/**
- * @author Kamil Kokot <kamil@kokot.me>
- */
 final class RabbitMqConsumer implements ConsumerInterface
 {
     /**

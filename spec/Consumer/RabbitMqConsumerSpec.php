@@ -13,9 +13,6 @@ use SyliusLabs\RabbitMqSimpleBusBundle\Bus\MessageBusInterface;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizationFailedException;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizerInterface;
 
-/**
- * @author Kamil Kokot <kamil@kokot.me>
- */
 final class RabbitMqConsumerSpec extends ObjectBehavior
 {
     function let(DenormalizerInterface $denormalizer, MessageBusInterface $messageBus, LoggerInterface $logger): void

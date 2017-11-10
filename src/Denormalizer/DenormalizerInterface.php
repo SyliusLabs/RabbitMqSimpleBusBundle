@@ -6,9 +6,6 @@ namespace SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer;
 
 use PhpAmqpLib\Message\AMQPMessage;
 
-/**
- * @author Kamil Kokot <kamil@kokot.me>
- */
 interface DenormalizerInterface
 {
     /**

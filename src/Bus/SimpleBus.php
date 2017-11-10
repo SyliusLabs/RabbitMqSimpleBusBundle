@@ -6,9 +6,6 @@ namespace SyliusLabs\RabbitMqSimpleBusBundle\Bus;
 
 use SimpleBus\Message\Bus\MessageBus;
 
-/**
- * @author Kamil Kokot <kamil@kokot.me>
- */
 final class SimpleBus implements MessageBusInterface
 {
     /**

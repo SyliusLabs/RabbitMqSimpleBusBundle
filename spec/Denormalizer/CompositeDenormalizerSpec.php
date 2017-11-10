@@ -9,9 +9,6 @@ use PhpSpec\ObjectBehavior;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizationFailedException;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizerInterface;
 
-/**
- * @author Kamil Kokot <kamil@kokot.me>
- */
 final class CompositeDenormalizerSpec extends ObjectBehavior
 {
     function it_is_a_denormalizer(): void
@@ -55,7 +52,7 @@ final class CompositeDenormalizerSpec extends ObjectBehavior
         $firstDenormalizer->supports($amqpMessage)->willReturn(false);
         $firstDenormalizer->denormalize($amqpMessage)->shouldNotBeCalled();
         $secondDenormalizer->supports($amqpMessage)->willReturn(false);
-        $secondDenormalizer->denormalize($amqpMessage)->shouldNotBeCalled();;
+        $secondDenormalizer->denormalize($amqpMessage)->shouldNotBeCalled();
 
         $this->addDenormalizer($firstDenormalizer);
         $this->addDenormalizer($secondDenormalizer);
