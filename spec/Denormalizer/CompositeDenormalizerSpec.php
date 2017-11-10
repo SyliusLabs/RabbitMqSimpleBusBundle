@@ -9,9 +9,6 @@ use PhpSpec\ObjectBehavior;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizationFailedException;
 use SyliusLabs\RabbitMqSimpleBusBundle\Denormalizer\DenormalizerInterface;
 
-/**
- * @author Kamil Kokot <kamil@kokot.me>
- */
 final class CompositeDenormalizerSpec extends ObjectBehavior
 {
     function it_is_a_denormalizer(): void

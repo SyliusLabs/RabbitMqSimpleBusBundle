@@ -8,9 +8,6 @@ use PhpSpec\ObjectBehavior;
 use SimpleBus\Message\Bus\MessageBus;
 use SyliusLabs\RabbitMqSimpleBusBundle\Bus\MessageBusInterface;
 
-/**
- * @author Kamil Kokot <kamil@kokot.me>
- */
 final class SimpleBusSpec extends ObjectBehavior
 {
     function let(MessageBus $messageBus): void
