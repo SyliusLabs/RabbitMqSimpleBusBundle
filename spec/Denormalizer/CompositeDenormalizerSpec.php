@@ -55,7 +55,7 @@ final class CompositeDenormalizerSpec extends ObjectBehavior
         $firstDenormalizer->supports($amqpMessage)->willReturn(false);
         $firstDenormalizer->denormalize($amqpMessage)->shouldNotBeCalled();
         $secondDenormalizer->supports($amqpMessage)->willReturn(false);
-        $secondDenormalizer->denormalize($amqpMessage)->shouldNotBeCalled();;
+        $secondDenormalizer->denormalize($amqpMessage)->shouldNotBeCalled();
 
         $this->addDenormalizer($firstDenormalizer);
         $this->addDenormalizer($secondDenormalizer);
