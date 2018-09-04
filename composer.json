@@ -7,7 +7,7 @@
         "php": "^7.1",
 
         "php-amqplib/rabbitmq-bundle": "^1.12",
-        "simple-bus/message-bus": "^2.2",
+        "simple-bus/message-bus": "^3.0",
         "simple-bus/symfony-bridge": "^5.1",
         "symfony/monolog-bundle": "^3.1"
     },
