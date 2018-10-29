@@ -5,7 +5,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-
         "php-amqplib/rabbitmq-bundle": "^1.12",
         "simple-bus/message-bus": "^2.2 || ^3.0",
         "simple-bus/symfony-bridge": "^4.1 || ^5.1",
